@@ -1,0 +1,50 @@
+
+<ion-content>
+    <ion-list>
+      <ion-item *ngFor="let song of this.auth.cart" class="itempanier" fullscreen> 
+         <ion-thumbnail slot="start">
+             <img src={{song.imgurl}}>
+           </ion-thumbnail>
+               <ion-label text-wrap >
+                   <ion-text>
+                     <h2>{{song.titre}}</h2>
+                   </ion-text>
+                   <ion-text >
+                     <h4>{{song.artiste}}</h4>
+                   </ion-text>
+                  
+                 </ion-label>
+                 <div class="icons">
+                 <ion-button fill="clear" > 
+                  <ion-icon  name="disc" color="tertiary" *ngIf="song.type=='Album'" ></ion-icon>
+                  <ion-icon  name="musical-note" color="tertiary" *ngIf="song.type=='Single'" ></ion-icon>
+                </ion-button>
+     
+             <ion-button (click)="this.delete(song)"    fill="clear">  
+               <ion-icon name="trash" class="Iconsize_For_Rev">
+               </ion-icon>
+             </ion-button>
+           
+
+           
+            
+            </div>
+      </ion-item>
+    </ion-list>
+   
+   
+   
+  <ion-row>
+
+  <!--  <ion-col  size="3">
+      <ion-button *ngIf="this.auth.cart.length!==0"  color="danger" (click)="this.auth.releasecart(this.auth.user)"> Vider</ion-button>
+    </ion-col>-->
+    <ion-col size="6">
+      <ion-button color="warning" (click)="this.dismiss()">Retour</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button [fedaCheckoutOptions]="checkoutButtonOptions"  color="success"> </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "457583124525",
+    "firebase_url": "https://beninstream.firebaseio.com",
+    "project_id": "beninstream",
+    "storage_bucket": "beninstream.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457583124525:android:818776f0af908de8b2d8a4",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457583124525-fpvlu17vtls7r8bef2sta2p3e7g9qatl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "911443a2977a1464e7550825b65871fd58839d52"
+          }
+        },
+        {
+          "client_id": "457583124525-2adcbr8ag65rd4an536s5qh72e5p9o74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZCy_fg0ysK10Ht2THiEC2KyojEvyRrb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457583124525-2adcbr8ag65rd4an536s5qh72e5p9o74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

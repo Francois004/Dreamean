@@ -1,0 +1,175 @@
+.backgroundimg{
+ background-repeat: no-repeat;
+background-size: cover !important;
+background-position: center !important ;
+text-align: center;
+
+}
+ion-toolbar {
+  --ion-background-color: transparent !important;
+  --ion-color-base: transparent !important;
+}
+ion-content{
+ // padding-bottom:7px !important ;
+}
+ion-footer {
+  background:#181616 !important;
+  decoration: none !important;
+  padding-top:40px !important;
+}
+ion-icon{
+  font-size: 25px;
+}
+.mytool {            
+    
+    border-top: 0.5px solid white !important;
+    border-bottom: 0.5px solid white !important;
+  
+}
+
+.boutton{
+    border-radius: 10px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    vertical-align: top;
+    text-align: center;
+}
+.badge {
+    background-color: rgb(45, 127, 233);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 100%;
+}
+
+  
+  
+  
+ 
+  .fixedContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 12px;
+    ion-text {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  
+    
+    ion-thumbnail {
+     width: 35vh;
+     height: 35vh;
+     background-size: cover !important;
+     background-position: center !important;
+     margin-bottom: 16px;
+     box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.66), 0 1px 5px 0 rgba(0, 0, 0, 0.65);
+     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear;
+   }
+   
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+    justify-content: flex-end;
+  }
+  .iconterm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    justify-content: flex-end;
+    padding-top:1px !important;
+   
+  }
+  .flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between ;
+    width: 100% !important;
+   
+   
+  }
+  .label{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    align-self: flex-start;
+    justify-content: center;
+    padding-top:0px !important;
+   
+  }
+  ion-item{
+    width: 100% !important;
+    padding-left:0px !important;
+    margin-left: 0px !important;
+  }
+  .spflex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self:flex-start;
+    padding-left: 0px !important;
+    justify-content: flex-start !important
+  }
+  .subartiste{
+    padding-left: 13px !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 1px !important;
+    font-size: 12px;
+  }
+ .titre{
+  text-transform: none;
+  font-size: 14px;
+
+ }
+  .index{
+    color:#7044ff !important;
+    align-content: flex-start;
+    align-self:flex-start;
+  }
+  h6{
+    color:#7044ff !important;
+  }
+  p{
+    margin:0px !important;
+    padding: 0px !important;
+
+  }
+  .footer{
+    padding-top:30px !important;
+  }
+  span{
+  text-transform: none;
+  font-size: 14px;
+  padding-bottom: 2px !important;
+  margin-bottom: 2px !important ;
+  }
+  ion-row{
+    height: 100%;
+    width:100%;
+  }
+  .cartbtn {            
+    position: relative;
+  //  width: 42px;
+    //top:2px;
+   // right: 2px;
+    overflow: visible!important;
+   // border-radius: 100% !important;
+}
+
+
+.cartbadge {
+    background-color: red;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border-radius: 100% !important;
+}

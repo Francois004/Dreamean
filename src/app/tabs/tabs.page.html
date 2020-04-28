@@ -1,0 +1,69 @@
+<ion-tabs>
+ 
+    <ion-toolbar *ngIf="this.musicserver.song&&this.musicserver.showsongbar"  slot="bottom"  (click)="this.goto()" >
+     
+                 <div class="range">
+                  <ion-range min="0" max="{{this.musicserver.duration}}" [(ngModel)]="this.musicserver.position"  color="tertiary">
+                
+                  </ion-range>
+              
+                 </div>
+            
+                <div class="flexRow">
+                  <div class="spflex">
+                      <ion-thumbnail  slot="start">
+                        <img src={{this.musicserver.song?.imgurl}}>
+                      </ion-thumbnail> 
+                  
+                      <ion-label class="songlabel">
+                  <ion-text ion-text-wrap>
+                     {{this.musicserver.song.titre}}
+                    </ion-text>
+                    <ion-text >
+                      <p>  {{this.musicserver.song.artiste}}</p>
+                    </ion-text>
+                  </ion-label>                               
+              </div>
+                  <div class="icons">
+                    <div class="play">
+                    <ion-button fill="clear" (click)="this.play($event)" *ngIf="!this.musicserver.is_playing" justify-content-center
+                     >
+                     <ion-icon src="/assets/icon/play-circle.svg"  class="Iconsize_For_Rev"></ion-icon>
+                    </ion-button>
+        
+                    <ion-button fill="clear" (click)="this.pause($event)"  *ngIf="this.musicserver.is_playing" justify-content-center
+                       >
+                       <ion-icon src="/assets/icon/pause-circle.svg" class="Iconsize_For_Rev"></ion-icon>
+                    </ion-button>
+                  </div>
+                    <div class="chevron">
+                    <ion-button fill="clear" (click)="this.stop()" >
+                    <ion-icon src="/assets/icon/stop-circle.svg" class="Iconsize_For_Rev"></ion-icon>
+                 </ion-button>
+                </div>
+                  </div>
+                </div>
+              
+             
+    </ion-toolbar>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="acceuil">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Acceuil</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="biblio">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Rechercher</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="gossip">
+      <ion-icon name="flame"></ion-icon>
+      <ion-label>Gossip</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="profiltab">
+      <ion-icon name="contact"></ion-icon>
+      <ion-label>Moi</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  
+</ion-tabs>
+ 

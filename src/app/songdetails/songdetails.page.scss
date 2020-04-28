@@ -1,0 +1,198 @@
+ion-icon {
+  &.Iconsize_For_Rev{
+    font-size: 28px;
+    color:white !important;
+   
+
+
+    
+  }
+
+  
+}
+
+
+.backgroundimg{
+    background-repeat: no-repeat;
+   background-size: cover !important;
+   background-position: center !important ;
+   text-align: center;
+   
+   }
+   
+   .mybutton {            
+       border-radius: 50px;
+       border: 2px solid rgba(19, 18, 18, 0.753);
+   }
+   
+   .boutton{
+       border-radius: 10px;
+       margin-left: auto !important;
+       margin-right: auto !important;
+       vertical-align: top;
+       text-align: center;
+   }
+   .badge {
+       background-color: rgb(45, 127, 233);
+       position: absolute;
+       top: -5px;
+       right: -5px;
+       border-radius: 100%;
+   }
+   ion-toolbar {
+    --ion-background-color: transparent !important;
+    --ion-color-base: transparent !important;
+  }
+  
+ 
+   /*ion-content {
+       --background: linear-gradient(to top, #060606, #00695c);
+     }
+     
+     ion-toolbar {
+       --background
+     }*/
+     ion-content{
+         padding-right:3px !important;
+         padding-left:3px !important;
+         padding-bottom: 10px;
+         font-style: normal;
+     }
+     
+     ion-footer {
+       background:#181616 !important;;
+      decoration: none !important;
+      padding-top:30px !important;
+     }
+     
+     .marquee {
+       width: 450px;
+       margin: 0 auto;
+       overflow: hidden;
+       white-space: nowrap;
+       box-sizing: border-box;
+       animation: marquee 50s linear infinite;
+     }
+     
+    
+     .marquee:hover {
+       animation-play-state: paused;
+     }
+     
+     /* Make it move */
+     @keyframes marquee {
+       0% {
+         text-indent: 30em;
+       }
+     
+       100% {
+         text-indent: -105em;
+       }
+     }
+     
+     .fixedContent {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+       padding-top: 5px;
+       ion-text,p,h1,h2,h3,h4,h5 {
+         font-size: 22px;
+         font-weight: bold;
+         font-style: normal;
+         font-family: Arial, Helvetica, sans-serif;
+       }
+     
+       ion-title {
+        text-align: center;
+    }
+       ion-thumbnail {
+        width: 35vh;
+        height: 35vh;
+        background-size: cover !important;
+        background-position: center !important;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.66), 0 1px 5px 0 rgba(0, 0, 0, 0.65);
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear;
+      }
+      
+     }
+    .cartbtn {            
+      position: relative;
+    //  width: 42px;
+      //top:2px;
+     // right: 2px;
+      overflow: visible!important;
+     // border-radius: 100% !important;
+  }
+
+
+.cartbadge {
+      background-color: red;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      border-radius: 100% !important;
+  }
+
+  
+     
+     ion-button.play_pause_btn {
+       width: 65px !important;
+       height: 65px !important;
+       // font-size: 2.3em !important;
+       --border-radius: 50%;
+       --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+       --transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear;
+     }
+     
+     .darkColor {
+       color: black !important;
+       font-size: 32px;
+       margin-left: 3px;
+     }
+     
+     ion-range {
+      // padding-bottom: 0;
+       //padding-top: 0;
+       width:40vh !important;
+      
+     }
+     
+     .rangePlaytime {
+       display: flex;
+       flex-direction: row;
+     justify-content: space-between !important;
+     
+       .startTime {
+         padding-left: 2px !important;
+        
+       }
+     
+       .endTime {
+         padding-right: 2px !important;
+      
+       }
+     }
+     ion-spinner{
+       stroke:rgb(45, 119, 230);
+       padding-right: 4px !important;
+     }
+     .spinner{
+      font-size: 33px;
+     }
+    
+     .flexRow {
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: space-between;
+     }
+     
+     /*.transparent_Item {
+       --background: transparent;
+     }*/
+     
+     .padding_Top {
+       padding-top: 10px;
+     }

@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Administrateur</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item-divider>Section Single</ion-item-divider>
+        <ion-item> 
+          <ion-input required type="text" placeholder="titre" [(ngModel)]="song.titre"></ion-input>
+         </ion-item>
+
+        <ion-item>
+          <ion-input required type="text" placeholder="Artiste" [(ngModel)]="song.artiste"></ion-input>
+        </ion-item>
+        <ion-item><ion-label>Entrez les featurings séparé par des virgules (s'il y en a plusieurs)</ion-label>
+            <ion-input required type="text" placeholder="featuring" [(ngModel)]="song.feats"></ion-input>
+          </ion-item>
+          <ion-item><ion-label>Entrez les producteurs séparé par des virgules (s'il y en a plusieurs)</ion-label>
+            <ion-input required type="text" placeholder="featuring" [(ngModel)]="song.credits"></ion-input>
+          </ion-item>
+
+        <div *ngIf="ctaudio">
+          Progress: {{ctaudio?.titre}} | {{ctaudio?.progress}}% Complete
+         </div>
+       
+            <ion-item>
+              <ion-label>Audio</ion-label>
+              <ion-note>insérer un fichier audio</ion-note>
+               <ion-input type="file" accept="audio/*" (change)="detectaudio($event)"></ion-input>
+            </ion-item>
+            <div *ngIf="ctimg">
+             
+              Progress: {{ctimg?.titre}} | {{ctimg?.progress}}% Complete
+             </div>
+            <ion-item>
+                <ion-label>Photo</ion-label>
+                <ion-note>insérer un fichier image</ion-note>
+                 <ion-input type="file" accept="image/*" (change)="detectimage($event)"></ion-input>
+                 </ion-item>
+                 <ion-item>
+                  <ion-label>Categorie</ion-label>
+                  <ion-select [interfaceOptions]="customAlertOptions" interface="alert" placeholder="choisir" [(ngModel)]="song.categorie" >
+                    <ion-select-option value="decouverte">A découvrir</ion-select-option>
+                    <ion-select-option value="mix">Mix Dreamean</ion-select-option>
+                    <ion-select-option value="aucun">Aucun</ion-select-option>
+                  </ion-select>
+                </ion-item>
+         </ion-list>
+            <ion-button expand="full" [disabled]="!selectedFiles" (click)="upSong()">Ajouter</ion-button>
+           
+     <ion-list >
+       <ion-item-divider>Section album </ion-item-divider>
+    
+          <ion-item> 
+            <ion-input required type="text" placeholder="titre de l'album" [(ngModel)]="album.titre"></ion-input>
+           </ion-item>
+  
+          <ion-item>
+            <ion-input required type="text" placeholder="Artiste principal" [(ngModel)]="album.artiste"></ion-input>
+          </ion-item>
+          <div *ngIf="ctcover">
+              Progress: {{ctcover?.titre}} | {{ctcover?.progress}}% Complete
+             </div>
+           
+               
+        
+                    <ion-item>
+                        <ion-label>Cover d'album</ion-label>
+                      
+                         <ion-input type="file" accept="image/*" (change)="detectcover($event)"></ion-input>
+                         </ion-item>
+                    
+                        <ion-button expand="full" [disabled]="!filecover" (click)="uploadAlbum()">Créer l'album</ion-button>
+             
+                        <div *ngIf="ctaudioalb">
+                            Progression: {{ctaudioalb?.titre}} | {{ctaudioalb?.progress}}% Complete
+                           </div> 
+                        <ion-item>
+                            <ion-note>choisir un fichier audio</ion-note>
+                            <ion-input   type="file" accept="audio/*" (change)="detectfile($event)"></ion-input>
+                            
+                          </ion-item>
+                         <ion-item>
+                          <ion-input required type="text" placeholder="titre" [(ngModel)]="albsong.titre" ></ion-input>
+                         </ion-item>
+                         <ion-item>
+                          <ion-input required type="text" placeholder="Artiste,featuring" [(ngModel)]="albsong.artiste"></ion-input>
+                         </ion-item>
+     </ion-list>
+                         <ion-button expand="full" [disabled]="!songfile" (click)="upAlbum()">Ajouter un titre a l'album</ion-button>
+                         
+                         <ion-button expand="full" [disabled]="!songfile" (click)="saveAlbum(album)">Finir l'album</ion-button>
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+                     
+  <ion-item-divider>
+    Section article
+  </ion-item-divider>
+  <ion-item>
+      <ion-input required type="text" placeholder="Titre" [(ngModel)]="article.titre"></ion-input>
+  </ion-item>
+      <ion-item>
+        
+        <ion-textarea  [(ngModel)]="article.contenu" placeholder="Entrer le contenu de l'article ici..." auto-grow></ion-textarea>
+      </ion-item>
+      <ion-item>
+          <ion-label>Photo optionnelle</ion-label>
+        
+           <ion-input type="file" accept="image/*" (change)="detectimage($event)"></ion-input>
+           </ion-item>
+           <ion-button expand="full" [disabled]="!fileimg" (click)="addarticle(article)">Ajouter l'article</ion-button>
+</ion-content>

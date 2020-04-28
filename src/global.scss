@@ -1,0 +1,54 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+ion-content,ion-header,ion-footer,ion-tabs,ion-modal,ion-alert,ion-input,ion-item{
+    --ion-background-color:#181616 !important;
+   // color:white !important;
+    }
+    ion-button,ion-buttons,ion-fab,ion-fab-button{
+        color:  #7044ff !important;
+    }
+   ion-card-title,ion-card-content,ion-card-header,h1,h2,h3,h4,h5,h6,ion-text,ion-icon,ion-label,ion-title,ion-spinner,ion-range,ion-note,ion-searchbar,div,p{
+        color:white !important;
+    }
+    ion-loading,ion-popover,ion-tab-bar,ion-toolbar{
+        --background:#181616 !important;
+       
+    }
+    .alert-input.sc-ion-alert-md {
+        color: var(--ion-text-color,#f4f5f8) !important;
+    }
+    ion-select{
+        --background:#181616 !important;
+       --ion-placeholder-color:white !important;
+      // opacity: 0!important;
+       color:white !important;
+        
+    }
+      ion-input{
+          color:white !important;
+
+      }

@@ -1,0 +1,114 @@
+ion-icon {
+  &.Iconsize_For_Rev{
+    font-size: 33px;
+    color:white !important;
+   
+
+
+    
+  }
+
+  
+}
+ion-range{
+  --knob-size:1px !important;
+  width:100% !important;
+  height:2.5px !important;
+  padding-left:0px !important;
+  padding-right:0px !important;
+  padding-top:0px !important;
+  padding-bottom: 1px !important;
+  pointer-events: none;
+  //float: inline-start !important;
+}
+
+  ion-thumbnail{
+   background-size: cover !important;
+    background-position: center !important;
+    width: 6vh;
+    height:6vh;
+  }
+  
+  .flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between ;
+    width: 100% !important;
+    padding-bottom:2px!important;
+    padding-top:0px !important;
+    padding-bottom: 2px !important;
+   
+  }
+  .spflex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px !important;
+   
+    justify-content: flex-start;
+  }
+  .songlabel{
+    align-self: center;
+    padding-left: 6px !important;
+    padding-right: 2px !important;
+    ion-text{
+      font-size: 15px;
+      font-weight: bold;
+      font-style: normal;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  }
+  .thumb{
+    //padding-left: 4px !important;
+    align-self: center;
+   
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+    justify-content: flex-end;
+  }
+  .tbar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    align-content: flex-start !important;
+    justify-content: flex-start;
+
+  }
+  
+    //#a0a belle couleur
+    ion-tab-button.tab-selected {
+     
+      //max-width:95px;
+    
+     ion-label{
+      color:#7044ff !important;
+     }
+     ion-icon{
+       color:#7044ff !important;
+     //  font-size: 45px;
+     }
+    }
+ 
+  ion-toolbar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    align-content: flex-start !important;
+    justify-content: flex-start;
+   
+    height:8vh !important;
+    --min-height:5.5vh !important;
+   // --opacity:0.97!important;
+    border-bottom: 0.3px solid rgb(231, 225, 225);
+  //  border-color: white;
+   // overflow-x: hidden;
+  }
+
+  

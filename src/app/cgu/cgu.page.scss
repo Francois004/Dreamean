@@ -1,0 +1,18 @@
+.content{
+    line-height: 1.6 !important;
+    padding:10px !important;
+}
+ion-content,ion-footer{
+    --ion-background-color:white !important;
+}
+ion-text,div,ion-title,ion-icon,h6,h4,h5,p,ion-label{
+    color:#181616 !important;
+}
+ion-toolbar{
+    --background:white !important;
+   
+}
+ion-back-button{
+    --background:#0a0a0a;
+   // --color:#0a0a0a;
+}

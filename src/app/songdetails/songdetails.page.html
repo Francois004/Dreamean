@@ -1,0 +1,159 @@
+<ion-header no-border>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="ios-arrow-back"></ion-back-button>
+    </ion-buttons>
+    <div *ngIf="this.musicserver.isalbumsong&&!this.musicserver.offline" class="fixedContent" (click)="this.musicserver.getdetailsforalbum(this.musicserver.album.id)">
+      <ion-label>
+        Depuis l'album
+      </ion-label> 
+      <strong>{{this.musicserver.album.titre}}</strong> 
+      </div>
+    <ion-buttons slot="end" routerLink="/filedattente" routerDirection="forward">
+      <ion-button><ion-icon name="options" style="zoom:1.1;"></ion-icon></ion-button>
+</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  fullscreen>
+    <div *ngIf="this.musicserver.song" >
+
+      <div class="fixedContent">
+          
+      <ion-thumbnail>
+        <img src={{this.musicserver.song?.imgurl}}>
+      </ion-thumbnail>
+      
+        <div class="padding_Top">
+          <div class="fixedContent">
+            <ion-text *ngIf="!this.musicserver.isalbumsong">{{this.musicserver.song.artiste}}</ion-text>
+            <ion-text *ngIf="this.musicserver.isalbumsong">{{this.musicserver.album.artiste}}</ion-text>
+          <ion-text >{{this.musicserver.song.titre}}</ion-text>
+          <ion-text *ngIf="this.musicserver.song.feats">Avec {{this.musicserver.song.feats}}</ion-text>
+        </div>
+            
+            <ion-range min="0" max="{{this.musicserver.duration}}" [(ngModel)]="this.musicserver.position" color="tertiary">
+                
+            </ion-range>
+        
+           <div class="rangePlaytime">
+              <ion-label class="startTime" >{{ this.musicserver.display_position }}</ion-label>
+              <ion-label class="endTime"  *ngIf="(this.musicserver.duration === -1)&&(!this.musicserver.song.duration)">--:--</ion-label>
+              <ion-label class="endTime"  *ngIf="this.musicserver.duration !== -1">{{ this.musicserver.display_duration }}</ion-label>
+              <ion-label class="endTime"  *ngIf="(this.musicserver.duration === -1)&&(this.musicserver.song.duration)">{{ this.musicserver.song.duration }}</ion-label>
+            </div>
+        </div>
+        <ion-grid>
+            <ion-row justify-content-center align-items-center style="height: 100%">
+              <ion-col>
+                <div class="flexRow">
+                  <div>
+                    <ion-button fill="clear" (click)="this.auth.userlikesong(this.auth.user,this.musicserver.song)" >
+                      <ion-icon name="heart-empty" class="Iconsize_For_Rev" *ngIf="!musicserver.song.isliked"></ion-icon>
+                      <ion-icon name="heart" class="Iconsize_For_Rev" *ngIf="musicserver.song.isliked" color="tertiary"></ion-icon>
+                    </ion-button>
+                  </div>
+        
+                  <div>
+                    <ion-button fill="clear" (click)="backward()">
+                      <ion-icon name="skip-backward" class="Iconsize_For_Rev"></ion-icon>
+                    </ion-button>
+                  </div>
+        
+                  <div>
+                    <ion-button class="play_pause_btn" (click)="this.musicserver.play(this.musicserver.song)" color="tertiary" *ngIf="!this.musicserver.is_playing" justify-content-center
+                      [disabled]="!this.musicserver.is_ready" align-items-center>
+                    <ion-spinner *ngIf="!this.musicserver.is_ready" class="spinner"></ion-spinner><ion-icon name="play" class="darkColor" *ngIf="this.musicserver.is_ready"></ion-icon>
+                    </ion-button>
+        
+                    <ion-button class="play_pause_btn" (click)="this.musicserver.pause(this.musicserver.song)" color="tertiary" *ngIf="this.musicserver.is_playing" justify-content-center
+                      [disabled]="!this.musicserver.is_ready" align-items-center>
+                     <ion-spinner *ngIf="!this.musicserver.is_ready" class="spinner"></ion-spinner> <ion-icon name="pause" class="darkColor" *ngIf="this.musicserver.is_ready"></ion-icon>
+                    </ion-button>
+                  </div>
+        
+                  <div>
+                    <ion-button fill="clear" (click)="forward()" >
+                      <ion-icon name="skip-forward" class="Iconsize_For_Rev"></ion-icon>
+                    </ion-button>
+                  </div>
+                  <div>
+                    <ion-button fill="clear" (click)="this.download(this.musicserver.song)" [disabled]="this.musicserver.song.downloading||this.musicserver.song.downloaded">
+                      <ion-icon name="cart" class="Iconsize_For_Rev" *ngIf="!this.musicserver.song.downloaded&&!this.musicserver.song.downloading&&!this.auth.user.ispremium"></ion-icon>
+                      <ion-icon name="download"  class="Iconsize_For_Rev" *ngIf="!this.musicserver.song.downloaded&&!this.musicserver.song.downloading&&this.auth.user.ispremium"></ion-icon>
+                      <ion-spinner *ngIf="this.musicserver.song.downloading&&!this.musicserver.song.downloaded"></ion-spinner>
+                      <ion-icon name="checkbox" class="Iconsize_For_Rev" *ngIf="this.musicserver.song.downloaded"></ion-icon>
+                    </ion-button>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row justify-content-center align-items-center style="height: 100%" *ngIf="this.auth.user.ispremium">
+              <ion-col >
+                <div class="flexRow">
+                  <div>
+                    <ion-button fill="clear" (click)="this.auth.repeatsong(this.musicserver.song)" >
+                      <ion-icon name="repeat" class="Iconsize_For_Rev" *ngIf="!musicserver.song.isrepeat"></ion-icon>
+                      <ion-icon name="repeat" class="Iconsize_For_Rev" *ngIf="musicserver.song.isrepeat" color="tertiary"></ion-icon>
+                    </ion-button>
+                  </div>
+
+                  <div>
+                    <ion-button fill="clear"  (click)="this.auth.userstartdownload(this.auth.user,this.musicserver.song)" [disabled]="this.musicserver.song.isvalidate">
+                      <ion-icon name="cart" class="Iconsize_For_Rev" *ngIf="!this.musicserver.song.isvalidate" ></ion-icon>
+                      <ion-badge color="tertiary" *ngIf="this.musicserver.song.isvalidate">P</ion-badge>
+                    </ion-button>
+                  </div>
+                </div>
+
+              </ion-col>
+            </ion-row>
+            
+        </ion-grid>
+        
+      </div>
+
+      <ion-list *ngIf="!this.musicserver.offline&&this.musicserver.subsong">
+        <ion-item>
+          <ion-label>
+          <ion-text><h6><strong>Producteur:</strong></h6></ion-text>
+          <ion-text><p>{{this.musicserver.subsong.credits}}</p></ion-text>
+        </ion-label>
+        </ion-item>
+           <ion-item>
+             <ion-label>
+           <ion-text><h6><strong>Ventes totales:</strong></h6></ion-text>
+           <ion-text><p>{{this.musicserver.subsong.downloads}}</p></ion-text>
+          </ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>
+            <ion-text><h6><strong>Lectures totales:</strong></h6></ion-text>
+            <ion-text><p>{{this.musicserver.subsong.listens}}</p></ion-text>
+           </ion-label>
+          </ion-item>
+             <ion-item>
+               <ion-label>
+              <ion-text><h6><strong>Date d'ajout:</strong></h6></ion-text>  
+              <ion-text><p>{{this.musicserver.subsong.createdAt}}</p></ion-text>
+            </ion-label>
+               </ion-item>
+             
+        </ion-list>
+      
+      
+      </div>
+     
+      
+     
+</ion-content>
+
+<ion-footer *ngIf="!this.musicserver.offline">
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  *ngIf="!this.musicserver.isdownload&&this.auth.cart.length!==0" >
+    <ion-fab-button (click)="presentCart()" class="cartbtn" color="tertiary">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge class="cartbadge" color="danger">{{this.auth.cart.length}}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

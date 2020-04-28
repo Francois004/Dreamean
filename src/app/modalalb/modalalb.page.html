@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-toolbar justify-content-center align-items-center >
+    <ion-buttons slot="start"><ion-button (click)="dismiss()" color="tertiary"> <ion-icon name="close-circle-outline"></ion-icon></ion-button></ion-buttons>
+      <div *ngIf="this.musicserver.subalbum">
+    <strong>{{this.musicserver.subalbum.titre}}</strong> 
+      </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="this.musicserver.subalbum">
+    <ion-item >
+      <ion-label>
+      <ion-text><h5><strong>Artiste:</strong></h5></ion-text>
+      <ion-text><p>{{this.musicserver.subalbum.artiste}}</p></ion-text>
+     </ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label>
+      <ion-text><h5><strong>Description:</strong></h5></ion-text>
+      <ion-text><p></p></ion-text>
+     </ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label>
+      <ion-text><h5><strong>Téléchargements:</strong></h5></ion-text>
+      <ion-text><p>{{this.musicserver.subalbum.downloads}}</p></ion-text>
+     </ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label>
+      <ion-text><h5><strong>Date d'ajout:</strong></h5></ion-text>
+      <ion-text><p>{{this.musicserver.subalbum.createdAt}}</p></ion-text>
+     </ion-label>
+    </ion-item>
+<ion-item >
+  <ion-label>
+  <ion-text><h5><strong>Feats:</strong></h5></ion-text>
+  <ion-text  ><p></p></ion-text>
+ </ion-label>
+</ion-item>
+</div>
+
+</ion-content>

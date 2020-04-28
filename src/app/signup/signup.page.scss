@@ -1,0 +1,29 @@
+
+.app-name{
+    font-size:50px;
+}
+.app-slogan{
+    font-size:15px;
+    padding-bottom:0px !important;
+}
+
+ion-input{
+    --placeholder-color:white !important;
+    --placeholder-opacity: 1 !important;
+   
+}
+/*ion-select{
+   
+    --placeholder-opacity: 1 !important;
+   // --opacity: 1 !important;
+}*/
+
+/*ion-alert{
+    $alert-max-height:70%;
+    $alert-min-width:300px;
+}*/
+
+img{
+    height: 70px;
+    width:70px;
+}

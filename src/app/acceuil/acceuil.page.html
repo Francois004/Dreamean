@@ -1,0 +1,83 @@
+
+<ion-content class="content" fullscreen>
+  <div *ngIf="!this.musicserver.offline">
+  <ion-card *ngIf="songsr">
+    <h3>Tendances</h3>
+    
+        <ion-slides [options]="greatslideOpts" >
+          <ion-slide *ngFor="let song of songsr" (click)="this.auth.verifylimitlistensacceuilpage(song.id)" >
+                <img src={{song.imgurl}} class="custom-image">
+        
+          <ion-label class="ion-text-wrap">
+               <ion-text><h4><strong>{{song.titre}}</strong></h4></ion-text> 
+               <ion-text ><p>{{song.artiste}}</p></ion-text> 
+              </ion-label>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  
+
+  <ion-card *ngIf="songsd">
+    <h3>Top singles</h3>
+    
+      <ion-slides [options]="slideOpts" >
+        <ion-slide *ngFor="let song of songsd" (click)="this.auth.verifylimitlistensacceuilpage(song.id)">
+              <img src={{song.imgurl}} class="customized-image">
+      
+        <ion-label class="ion-text-wrap">
+             <ion-text><h4><strong>{{song.titre}}</strong></h4></ion-text> 
+             <ion-text ><p>{{song.artiste}}</p></ion-text> 
+            </ion-label>
+    </ion-slide>
+  </ion-slides>
+  </ion-card>
+  <ion-card *ngIf="songsc">
+  <h3>Dernières sorties</h3>
+  <p> Les derniers hits, mis à jour tout le temps </p>
+      <ion-slides [options]="slideOpts" >
+        <ion-slide *ngFor="let song of songsc" (click)="this.auth.verifylimitlistensacceuilpage(song.id)">
+              <img src={{song.imgurl}} class="customized-image">
+      
+        <ion-label class="ion-text-wrap">
+             <ion-text><h4><strong>{{song.titre}}</strong></h4></ion-text> 
+             <ion-text ><p>{{song.artiste}}</p></ion-text> 
+            </ion-label>
+    </ion-slide>
+  </ion-slides>
+  </ion-card>
+  <ion-card *ngIf="this.musicserver.albumss">
+  <h3>Top albums</h3>
+  <p> Crème de la crème au 229 </p>
+  <ion-slides [options]="greatslideOpts" >
+    <ion-slide *ngFor="let album of this.musicserver.albumss" (click)="this.musicserver.getdetailsforalbum(album.id)" >
+       <img src={{album.imgurl}} class="custom-album"> 
+  
+    <ion-label class="ion-text-wrap">
+         <ion-text><h4><strong>{{album.titre}}</strong></h4></ion-text> 
+         <ion-text ><p>{{album.artiste}}</p></ion-text> 
+        </ion-label>
+</ion-slide>
+</ion-slides>
+  </ion-card>
+<!--<div *ngIf="songsr">
+  <h3>A découvrir</h3>
+  </div>
+      <ion-slides [options]="greatslideOpts" >
+        <ion-slide *ngFor="let song of songsr" (click)="this.musicserver.getdetailsforsong(song.id)" >
+              <img src={{song.imgurl}} class="customized-image">
+      
+        <ion-label class="ion-text-wrap">
+             <ion-text><h4><strong>{{song.titre}}</strong></h4></ion-text> 
+             <ion-text ><p>{{song.artiste}}</p></ion-text> 
+            </ion-label>
+    </ion-slide>
+  </ion-slides>
+</div>-->
+  </div>
+<div *ngIf="this.musicserver.offline" class="ion-padding ion-text-center">
+<ion-icon name="eye-off" style="zoom:5.0;"></ion-icon>
+ <div style="font-size: 30px;font-weight: bold;"> 
+  Aucune connexion...
+</div>
+</div>
+</ion-content>

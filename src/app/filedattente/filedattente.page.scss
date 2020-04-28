@@ -1,0 +1,31 @@
+ion-title{
+    justify-content: center;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+    justify-content: flex-end;
+  }
+  .btnMore{
+     padding-bottom:5px ;
+    padding-left:5px;
+   padding-right:1px;
+   padding-top:1px;
+    position:absolute;
+    top:0;
+    left:0;
+    width:18px;
+    height:16px;
+    background-color:#181616;
+    }
+     
+         
+  ion-thumbnail{
+   width: 8vh;
+  height: 8vh;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative;
+  }

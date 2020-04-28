@@ -1,0 +1,111 @@
+
+<ion-content class="ion-padding">
+  <ion-toolbar>
+  <ion-searchbar
+  [formControl]="searchControl"
+  (ionChange)="onSearchInput()"
+ placeholder="Titre ou album ..."
+></ion-searchbar>
+</ion-toolbar>
+<div *ngIf="!this.musicserver.offline">
+<div *ngIf="searching" class="spinner-container">
+  <ion-spinner></ion-spinner>
+</div>
+<div *ngIf="!blank">
+  <ion-list>
+      <h4>Ecoutés récemment </h4>
+ <div class="flex">
+    <ion-card *ngFor="let song of this.musicserver.recents" (click)="this.auth.verifylimitlistensacceuilpage(song.id)">
+      <ion-card-header>
+      <ion-label>
+          <ion-text><h4><strong>{{song.titre}}</strong></h4></ion-text> 
+          <ion-text ><p>{{song.artiste}}</p></ion-text> 
+         </ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <img src={{song.imgurl}} class="customized-image">
+      </ion-card-content>
+      <ion-row>
+    <ion-col>Ecoutes: ({{song.listens}})</ion-col>   
+      </ion-row>
+
+    </ion-card>
+  </div>
+  
+ </ion-list>
+</div>
+<div *ngIf="blank">
+<ion-list>
+  
+  <ion-item *ngFor="let item of titles">
+    <ion-avatar slot="start">
+      <img src={{item.imgurl}}>
+    </ion-avatar>
+        <ion-label text-wrap >
+            <ion-text>
+              <h2>{{item.titre}}</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p>Titre de {{item.artiste}}</p>
+            </ion-text>
+            <ion-icon name="musical-note" slot="start" color="tertiary"></ion-icon>
+          </ion-label>
+  <ion-buttons slot="end">
+      <ion-button (click)="this.auth.verifylimitlistensacceuilpage(item.id)" color="tertiary" >  
+        <ion-icon name="arrow-forward" color="tertiary" >
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>
+<ion-list>
+    
+  <ion-item *ngFor="let item of titlesfromalbum">
+    <ion-thumbnail slot="start">
+      <img src={{item.imgurl}}>
+    </ion-thumbnail>
+        <ion-label text-wrap >
+            <ion-text>
+              <h2>{{item.titre}}</h2>
+            </ion-text>
+            <ion-text color="medium">
+              <p>Album par {{item.artiste}}</p>
+            </ion-text>
+            <ion-icon name="disc" slot="start" color="tertiary"></ion-icon>
+          </ion-label>
+  <ion-buttons slot="end">
+      <ion-button (click)="this.musicserver.getdetailsforalbum(item.id)"  >  
+        <ion-icon name="arrow-forward" color="tertiary">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>
+</div>
+</div>
+<div *ngIf="this.musicserver.offline" class="ion-padding ion-text-center">
+ <ion-icon name="eye-off" style="zoom:5.0;"></ion-icon>
+   <div style="font-size: 30px;font-weight: bold;"> 
+    Aucune connexion...
+  </div>
+  </div>
+<!--<ion-list lines="full">
+<ion-item *ngFor="let album of albums"  >
+    <ion-thumbnail slot="start">
+      <img [src]=album?.imgurl />
+    </ion-thumbnail>
+    <ion-label text-wrap >
+        <ion-text>
+          <h1>{{album.titre}}</h1>
+        </ion-text>
+        <ion-text color="primary">
+          <h3>{{album.artiste}}</h3>
+        </ion-text>
+        <ion-text color="medium">
+         <ion-note><ion-icon name="list" slot="start"></ion-icon>
+          {{album?.songs.length}} titres - {{album?.createdAt}}</ion-note> 
+          </ion-text>  
+      </ion-label>
+  </ion-item>
+</ion-list>-->
+</ion-content>

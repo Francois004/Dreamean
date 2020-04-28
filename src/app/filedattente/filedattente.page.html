@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title> Votre file d'attente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list >
+  <ion-item *ngFor="let song of this.musicserver.attente" (click)="this.play(song)" >
+    <ion-thumbnail slot="start">
+      <img src={{song.imgurl}}>
+  <ion-icon [name]="this.iconame" color="tertiary" *ngIf="song.isplayed" class="btnMore"></ion-icon>
+    </ion-thumbnail>
+        <ion-label text-wrap >
+            <ion-text>
+              <h2>{{song.titre}}</h2>
+            </ion-text>
+            <ion-text >
+              <h4>{{song.artiste}}</h4>
+            </ion-text>
+          </ion-label>
+          <div class="icons">
+           
+            <ion-button fill="clear" (click)="this.presentListenPop($event,song)"><ion-icon name="more" style="zoom:1.5;"></ion-icon></ion-button>
+          </div>
+  </ion-item>
+</ion-list>
+
+
+ 
+
+</ion-content>

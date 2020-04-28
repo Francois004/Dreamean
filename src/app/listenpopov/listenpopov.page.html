@@ -1,0 +1,21 @@
+
+<ion-content>
+<ion-list>
+  <ion-item tappable (click)="this.listenafter()">
+   <ion-label>Ecouter après </ion-label>
+  </ion-item>
+  <ion-item tappable (click)="this.reup()">
+   <ion-label>Re-up</ion-label>
+      </ion-item>
+      <ion-item tappable *ngIf="!this.song.islooped" (click)="this.loop()" >
+       <ion-label>Ecouter en boucle</ion-label>
+      </ion-item>
+      <ion-item tappable  *ngIf="this.song.islooped" (click)="this.loop()">
+       <ion-label>Désactiver la boucle</ion-label>
+      </ion-item>
+  
+            <ion-item tappable (click)="this.delete()" >
+               <ion-label>Suppprimer</ion-label> 
+                  </ion-item>
+</ion-list>
+</ion-content>

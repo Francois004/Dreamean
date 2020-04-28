@@ -1,0 +1,268 @@
+<ion-content fullscreen>
+  <ion-toolbar>
+      <ion-segment scrollable [(ngModel)]="viewMode" >
+    <ion-segment-button value="profil">
+      <ion-label>Profil</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="horsligne"> 
+      <ion-label>Horsligne</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="favoris"> 
+    <ion-label>Favoris</ion-label>
+</ion-segment-button>
+
+  </ion-segment>
+  </ion-toolbar>
+
+  <ng-container *ngIf="viewMode=='profil'">
+
+    <div *ngIf="this.musicserver.offline" class="ion-padding ion-text-center">
+    <ion-icon name="eye-off" style="zoom:5.0;"></ion-icon>
+      <div style="font-size: 30px;font-weight: bold;"> 
+       Aucune connexion détectée...
+     </div>
+     </div>
+    <ion-list *ngIf="!this.musicserver.offline">
+ <ion-item *ngIf="this.auth.user.prenom.length!==0||this.auth.user.nom.length!==0"  (click)="this.show()">
+  <ion-text><h5>{{this.auth.user.prenom}} {{this.auth.user.nom}}</h5></ion-text>
+ </ion-item> 
+ <ion-item *ngIf="this.auth.user.mail.length!==0">
+  <ion-text>Mail : {{this.auth.user.mail}}</ion-text>
+ </ion-item> 
+ <ion-item *ngIf="this.auth.user.prenom.length===0&&this.auth.user.nom.length===0">
+  <p>Renseignez-nous</p>
+  <ion-buttons slot="end" *ngIf="this.isshowed"><ion-button (click)="this.show()"><ion-icon slot="end" name="create" style="zoom:1.5;"></ion-icon></ion-button></ion-buttons>
+
+ </ion-item>     
+          
+            <ion-item *ngIf="!this.isshowed&&!this.musicserver.offline">
+                <h4>  <ion-label position="stacked">Nom </ion-label></h4>
+                <ion-input [(ngModel)]="this.nom" ></ion-input>
+              </ion-item>
+
+            <ion-item *ngIf="!this.isshowed&&!this.musicserver.offline">
+              <h4>  <ion-label position="stacked">Prenom</ion-label></h4>
+              <ion-input [(ngModel)]="this.prenom" ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!this.isshowed&&!this.musicserver.offline">
+              <h4>  <ion-label position="stacked">Mail </ion-label></h4>
+              <ion-input [(ngModel)]="this.mail" ></ion-input>
+            </ion-item>
+              <ion-button expand="full" color="tertiary" (click)="this.updateusercredts()" *ngIf="!this.isshowed">Enregistrer</ion-button>
+              
+                  <ion-item>
+                    <ion-label> Contact : {{this.auth.user.num}}</ion-label> 
+                  </ion-item>
+                  <ion-item>
+                   <ion-label>Mode premium</ion-label> 
+                   <ion-badge color="success" *ngIf="this.auth.user.ispremium" >Activé</ion-badge>
+                   <ion-badge color="danger" *ngIf="!this.auth.user.ispremium" >Désactivé</ion-badge>
+                  
+                  <ion-buttons slot="end"><ion-button (click)="this.presentAlertPremium(this.auth.user)"><ion-icon name="switch" style="zoom:1.5;"></ion-icon></ion-button></ion-buttons>
+                  </ion-item>
+                  
+                  <ion-item *ngIf="this.auth.user.ispremium">
+                    <ion-label>Date de fin: {{this.auth.user.enddate}}</ion-label>
+                  </ion-item>
+                      <ion-item routerLink="/admin" routerDirection="forward"  *ngIf="this.auth.user.isadmin">
+                          <ion-icon name="warning" slot="start"></ion-icon>
+                           <ion-label>Administration</ion-label>  
+                      </ion-item>
+                      
+                      <ion-item routerLink="/cgu" routerDirection="forward" >
+                        <ion-icon name="warning" slot="start"></ion-icon>
+                         <ion-label>A propos</ion-label>  
+                    </ion-item>
+
+                    <ion-item (click)="this.auth.destroyUser()">
+                      <ion-icon name="power" slot="start"></ion-icon>
+                  <ion-label> Déconnectez-vous</ion-label>  
+                    </ion-item>
+              </ion-list>
+    
+  </ng-container>
+  
+  <ng-container *ngIf="viewMode=='horsligne'">
+   <ion-toolbar *ngIf="(this.musicserver.directories.length>=2)"  >
+     <ion-row>
+      <ion-col>
+        <ion-button (click)="this.normal()" color="tertiary">
+          <div class="iconterm">
+          <ion-icon name="flash" style="zoom:1.1;"></ion-icon>
+          <span>Normalement</span>
+         </div>
+        </ion-button>
+       </ion-col>
+       <ion-col>
+        <ion-button (click)="this.aleatory()" color="tertiary">
+          <div class="iconterm">
+          <ion-icon name="shuffle" style="zoom:1.1;"></ion-icon>
+          <span>Aléatoirement</span>
+         </div>
+        </ion-button>
+       </ion-col>
+     </ion-row>
+    
+   </ion-toolbar>
+   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMin="60" pullMax="100">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Tirez pour rafraichir "
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+      <ion-list  *ngIf="this.musicserver.directories.length==0" class="ion-padding ion-text-center">
+        <div style="font-size: 30px;font-weight: bold;"> 
+          Aucun titre téléchargé!
+        </div>
+      </ion-list>
+        <ion-list *ngIf="this.musicserver.directories.length!=0">
+         
+              
+              <ion-item (click)="this.musicserver.getsongfromoffline(song)" *ngFor="let song of this.musicserver.directories;let i=index">
+                <ion-thumbnail slot="start">
+                  <img src={{song.imgurl}}>
+                  <ion-icon [name]="this.iconame" color="tertiary" *ngIf="song.isplayed" class="btnMore"></ion-icon>
+                </ion-thumbnail>
+                <ion-label ion-text-wrap>
+               
+                  <ion-text>
+                  {{ song.artiste }}
+                  </ion-text>
+                <ion-text>
+                  <h5>{{ song.titre}}
+                  </h5>
+                </ion-text>    
+                <ion-text>
+                  <ion-badge color="tertiary" *ngIf="song.isvalidate" >p</ion-badge>
+                  <ion-icon  name="disc" color="tertiary" *ngIf="song.type=='Album'" ></ion-icon>
+                  <ion-icon  name="musical-note" color="tertiary" *ngIf="song.type=='Single'" ></ion-icon>
+                  
+                </ion-text>
+                </ion-label>
+                <div class="icons">
+                  <ion-button fill="clear" class="more" > 
+                    <ion-icon name="checkmark-circle"   color="tertiary" style="zoom:1.1;" *ngIf="song.downloaded"></ion-icon>
+                    <ion-spinner style="zoom:0.8;" *ngIf="song.downloading&&!song.downloaded" color="tertiary"></ion-spinner>
+                  </ion-button>
+                 
+                 
+                  <ion-button fill="clear" class="more" (click)="this.presentListenPop($event,song)"> <ion-icon name="more"  style="zoom:1.5;"></ion-icon>
+                  </ion-button>
+                </div>
+               
+              </ion-item>
+         
+            
+        </ion-list>
+        
+        <ion-item *ngIf="(this.auth.downloads.length!==0)&&!clicked&&!this.musicserver.offline" class="ion-padding" tappable (click)="showd()" >
+         <ion-label>Restaurer vos téléchargements perdus </ion-label> 
+        </ion-item>
+       <ion-list *ngIf="clicked">
+         <ion-item *ngFor="let song of this.auth.downloads" (click)="this.redownload(song)">
+            <ion-thumbnail slot="start">
+              <ion-img src={{song.imgurl}}></ion-img>
+            </ion-thumbnail>
+            <ion-label ion-text-wrap>
+              <ion-text>
+                <p>{{ song.artiste }}</p>
+              </ion-text>
+            <ion-text>
+              <h5>{{ song.titre}}</h5>
+            </ion-text>    
+            <ion-text>
+              <ion-icon  name="disc" color="tertiary" *ngIf="song.type=='Album'" ></ion-icon>
+              <ion-icon  name="musical-note" color="tertiary" *ngIf="song.type=='Single'" ></ion-icon>
+              cliquez pour télécharger
+            </ion-text>
+            </ion-label>
+            <div class="icons">
+              <ion-button fill="clear" > 
+                <ion-icon name="checkmark-circle"   color="tertiary" style="zoom:1.1;" *ngIf="song.downloaded"></ion-icon>
+                <ion-spinner style="zoom:0.8;" *ngIf="song.downloading&&!song.downloaded" color="tertiary"></ion-spinner>
+              </ion-button>
+             
+             
+            </div>
+
+         </ion-item>
+       </ion-list>
+      
+       
+ 
+  </ng-container>
+
+
+
+
+  <ng-container *ngIf="viewMode=='favoris'">
+    <ion-toolbar *ngIf="this.auth.favorites.length!=0&&!this.musicserver.offline">
+      <ion-row>
+        <ion-col>
+         <ion-button (click)="this.aleatoryf()" color="tertiary">
+           <div class="iconterm">
+           <ion-icon name="shuffle" style="zoom:1.1;"></ion-icon>
+           <span>Aléatoirement</span>
+          </div>
+         </ion-button>
+        </ion-col>
+      </ion-row>
+     
+    </ion-toolbar>
+     
+         
+          <div *ngIf="this.musicserver.offline" class="ion-padding ion-text-center">
+           <ion-icon name="eye-off" style="zoom:5.0;"></ion-icon>
+             <div style="font-size: 30px;font-weight: bold;"> 
+              Aucune connexion détectée...
+            </div>
+            </div>
+         
+           
+         <ion-list *ngIf="!this.musicserver.offline">
+        
+
+        
+           
+              <div style="font-size: 30px;font-weight: bold;" *ngIf="this.auth.favorites.length==0" class="ion-padding ion-text-center"> 
+                Aucun titre favori ...
+              </div>
+          
+          
+        
+              
+          <ion-item (click)="this.auth.verifylimitlistensfavoritepage(song.id)" *ngFor="let song of this.auth.favorites;let i=index">
+            <ion-thumbnail slot="start">
+              <ion-img src={{song.imgurl}}></ion-img>
+              <ion-icon [name]="this.iconame" color="tertiary" *ngIf="song.isplayed" class="btnMore"></ion-icon>
+            </ion-thumbnail>
+            <ion-label ion-text-wrap>
+              <ion-text>
+                <p>{{ song.artiste }}</p>
+              </ion-text>
+            <ion-text>
+              <h5>{{ song.titre}}</h5>
+            </ion-text>    
+            <ion-text>
+              <ion-icon  name="disc" color="tertiary" *ngIf="song.type=='Album'" ></ion-icon>
+              <ion-icon  name="musical-note" color="tertiary" *ngIf="song.type=='Single'" ></ion-icon>
+            </ion-text>
+            </ion-label>
+            <div class="icons">
+             
+              <ion-button fill="clear"> 
+                <ion-icon name="heart"   color="tertiary" style="zoom:1.1;"></ion-icon>
+              </ion-button> 
+              <ion-button fill="clear" (click)="this.presentListenPop($event,song)"> <ion-icon name="more"  style="zoom:1.5;"></ion-icon>
+              </ion-button>
+            </div>
+           
+          
+          </ion-item>
+        </ion-list>
+  </ng-container>
+         
+        
+  </ion-content>
+ 

@@ -1,0 +1,29 @@
+
+<ion-content class="ion-padding" fullscreen>
+
+        <div *ngIf="this.article">
+            
+          <h5>{{article.titre}}</h5>    
+      
+      </div>
+     
+  
+  <div *ngIf="this.article" class="content">
+      <ion-text text-wrap>{{article.contenu}}</ion-text>
+     
+  </div>
+
+</ion-content>
+<ion-footer class="ion-padding"> <div *ngIf="this.article" no-border>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="this.auth.userlikearticle(this.auth.user,this.article)">
+      <ion-icon name="heart-empty" *ngIf="!article.liked"></ion-icon>
+      <ion-icon name="heart" *ngIf="article.liked"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="dismiss()">
+      <ion-icon name="close" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div></ion-footer>

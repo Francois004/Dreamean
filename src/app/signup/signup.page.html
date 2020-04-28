@@ -1,0 +1,37 @@
+<ion-content force-overscroll="false" class="ion-padding">
+  <ion-row>
+      <ion-col class="ion-align-items-center ion-text-center">
+        <div><img src="assets/image/logo.png"></div>
+       <h2 class="app-name"> Dreamean </h2>   
+      </ion-col>
+    </ion-row>
+  
+ 
+
+
+
+<div id="recaptcha-container"></div>
+
+
+<ion-item>
+<ion-icon slot="start" name="pin"></ion-icon>
+  <ion-select item-left [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Pays" [(ngModel)]="this.selectedcountry" (ionChange)="setvalue()" >
+   
+    <ion-select-option *ngFor="let country of countries;let i=index" [value]="country">{{country.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+    <ion-icon slot="start" name="call"></ion-icon>
+<ion-input item-left type="number" class="input" placeholder="Numéro de téléphone" [(ngModel)]="phoneNumber"></ion-input>
+</ion-item>
+<ion-row>
+  <ion-col class="ion-align-items-center ion-text-center">
+    <ion-button  color="tertiary" class="submit-btn" type="submit"  (click)="this.authService.loadUser(this.phoneNumber)">Connexion</ion-button>
+  </ion-col>
+</ion-row>
+
+
+
+
+</ion-content>

@@ -1,0 +1,136 @@
+<ion-header no-border>
+<ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button  icon="ios-arrow-back"></ion-back-button>
+  </ion-buttons>
+ 
+ 
+    <ion-buttons slot="end"><ion-button (click)="presentPop($event)" > <ion-icon name="information-circle"></ion-icon>
+    </ion-button></ion-buttons>
+        </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="this.musicserver.album">
+    <div class="fixedContent">
+      <ion-thumbnail >
+        <ion-img src={{this.musicserver.album?.imgurl}}></ion-img>
+      </ion-thumbnail>
+      <div class="fixedContent">
+        <ion-text >{{this.musicserver.album.artiste}}</ion-text>
+          <ion-text >{{this.musicserver.album.titre}} </ion-text>
+      </div>
+    
+      <ion-row>
+        <ion-col >
+          <ion-button  fill="clear" (click)="this.playorpause(this.musicserver.album)" >
+            <div class="iconterm" *ngIf="!this.musicserver.album.isplayed">
+           <ion-icon name="play" ></ion-icon>
+          <span>Ecouter</span>  
+          </div>
+          <div class="iconterm" *ngIf="this.musicserver.album.isplayed">
+            <ion-icon name="pause" ></ion-icon>
+           <span>Pause</span>  
+           </div>
+            </ion-button>
+             
+        </ion-col>
+          <ion-col >
+      
+      <ion-button  fill="clear" (click)="this.aleatory()" >
+        <div class="iconterm" >
+       <ion-icon name="shuffle" ></ion-icon>
+      <span>Aléatoire</span>  
+      </div>
+     
+
+        </ion-button>
+         
+    </ion-col>
+    <ion-col >
+      <ion-button fill="clear" (click)="this.downloads(this.musicserver.album)" [disabled]="this.musicserver.album.downloaded||this.musicserver.album.downloading" >
+        <div *ngIf="!this.auth.user.ispremium&&!this.musicserver.album.downloaded" class="iconterm">
+          <ion-icon name="cart"  ></ion-icon>
+         <span >Acheter</span> 
+        </div>
+        <div *ngIf="this.auth.user.ispremium&&!this.musicserver.album.downloaded&&!this.musicserver.album.downloading" class="iconterm">
+          <ion-icon name="ios-download"  ></ion-icon>
+         <span>Télécharger</span> 
+        </div>
+        <div *ngIf="this.musicserver.album.downloaded" class="iconterm">
+          <ion-icon name="checkmark-circle"  ></ion-icon>
+        <span>Téléchargé</span>  
+        </div>
+        <div  *ngIf="!this.musicserver.album.downloaded&&this.musicserver.album.downloading" class="iconterm">
+          <ion-spinner></ion-spinner>
+         <span>Patientez</span> 
+        </div>
+        </ion-button>
+         
+    </ion-col>
+  </ion-row>
+
+</div>
+
+<ion-list >
+  <ion-item *ngFor="let song of this.musicserver.album.songs ;let i=index" (click)="this.auth.verifylimitlistensalbumsong(i,this.musicserver.album.id)"> 
+   
+      <ion-label>
+      <div class="spflex">
+        <div class="index"><ion-icon [name]="this.iconame" color="tertiary" slot="start" style="zoom:0.7;" *ngIf="song.isplayed"></ion-icon>
+        <h6  *ngIf="!song.isplayed" color="tertiary">{{i+1}}.</h6>
+        </div>    
+        <div class="titre">
+         <strong>{{song.titre}}</strong> 
+        </div>     
+      </div>
+          <ion-text class="subartiste">
+           {{song.artiste}}
+          </ion-text>  
+      
+      </ion-label>
+      <div class="icons">
+        <ion-buttons>
+        <ion-button clear (click)="this.download(song)"  *ngIf="!song.downloading" >  
+          <ion-icon name="cart" *ngIf="!this.auth.user.ispremium&&!song.downloaded" color="tertiary" slot="end">
+          </ion-icon>
+          <ion-icon name="ios-download" *ngIf="this.auth.user.ispremium&&!song.downloaded" color="tertiary" slot="end">
+          </ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons>
+          <ion-button clear   *ngIf="song.downloaded">  
+            <ion-icon name="checkmark-circle" color="tertiary" slot="end" >
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      <ion-buttons>
+          <ion-button *ngIf="song.downloading&&!song.downloaded" >  
+            <ion-spinner></ion-spinner>
+          </ion-button>
+        </ion-buttons>
+      <ion-buttons>
+        <ion-button clear >  
+          <ion-icon name="more" slot="end">
+          </ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+ 
+  </ion-item>
+</ion-list>
+
+</div>
+
+
+</ion-content>
+<ion-footer *ngIf="!this.musicserver.offline&&this.musicserver.album">
+  <ion-badge *ngIf="this.musicserver.album.isvalidate" color="tertiary">P</ion-badge>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  *ngIf="!this.musicserver.album.isvalidate&&this.auth.user.ispremium" >
+    <ion-fab-button (click)="presentCart()" class="cartbtn" color="tertiary">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge class="cartbadge" color="danger">{{this.auth.cart.length}}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>
+   

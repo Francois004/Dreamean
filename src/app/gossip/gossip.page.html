@@ -1,0 +1,45 @@
+
+<ion-content class="ion-padding" fullscreen>
+<ion-list *ngIf="!this.musicserver.offline">
+  
+  <ion-card *ngFor="let article of articles" (click)="this.auth.userviewarticle(this.auth.user,article)">
+      <ion-card-header>
+          <ion-card-title>{{article.titre}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <img src={{article.imgurl}} class="customized-image">
+        </ion-card-content>
+        <ion-row class="cardfooter">
+          <ion-col size="5"> 
+            <ion-button size="small" color="tertiary">
+            <ion-icon  slot="icon-only" name="heart"></ion-icon>   
+          </ion-button>         
+            <ion-text class="ion-text-center">
+                <ion-label  *ngIf="article.likes===0||article.likes===1"> {{article.likes}} like</ion-label>
+                <ion-label  *ngIf="article.likes!==0&&article.likes!==1"> {{article.likes}} likes</ion-label>
+              </ion-text> 
+        </ion-col>
+        <ion-col size="5">
+          <ion-button size="small" color="tertiary">
+            <ion-icon slot="icon-only" name="eye"></ion-icon> 
+          </ion-button>
+            <ion-text class="ion-text-center">
+                <ion-label  *ngIf="article.sees===0||article.sees===1"> {{article.sees}} vue</ion-label>
+                <ion-label  *ngIf="article.sees!==0&&article.sees!==1"> {{article.sees}} vues</ion-label>
+              </ion-text> 
+        </ion-col>
+        <ion-col >
+           
+        </ion-col>
+       
+          </ion-row>
+      
+  </ion-card>
+</ion-list>
+<div *ngIf="this.musicserver.offline" class="ion-padding ion-text-center">
+<ion-icon name="eye-off" style="zoom:5.0;"></ion-icon>
+   <div style="font-size: 30px;font-weight: bold;"> 
+    Aucune connexion...
+  </div>
+  </div>
+</ion-content>
