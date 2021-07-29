@@ -16,7 +16,7 @@ Fonctionnalités :
 
 -Possibilité de passer à un plan premium plus avantageux 
 
--Paiemeent en quelques clics grace au service/api Fedapay/Mobile money
+-Paiement en quelques clics grace au service/api Fedapay/Mobile money
 
 -Ajout dans les sections playlits et favoris
 
@@ -27,7 +27,7 @@ Fonctionnalités :
 -Ajout de nouveaux sur l'actualité musical (administrateur)
 
 -Diponible sur la plateforme Android
-
+<img src="https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg" width="100" height="100">
 ![IMG-20200412-WA0037](https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg) 
 ![WhatsApp Image 2020-07-22 at 22 38 06](https://user-images.githubusercontent.com/47745859/127496011-9b7d6c01-d6d9-40f0-bc31-89377a6bf06c.jpeg)
 
