@@ -1,9 +1,12 @@
 # Dreamean
 Application de streaming musical et local (Bénin)
+
 Fonctionnalités :
 
 -Authentification  grace son numéro mobile
+
 -Accès en exclusivité à tout les singles( format mp3) et albums de la scène musciale béninoise 
+
 -Posibilité  d'enregistrer les musiques pour le mode hors connexion 
 -Modification de la d'attente 
 -Recherche de musiques , d'albums, ou d'artistes spécifiques
