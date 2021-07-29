@@ -27,8 +27,7 @@ Fonctionnalités :
 -Ajout de nouveaux sur l'actualité musical (administrateur)
 
 -Diponible sur la plateforme Android
-<body style="padding-right: 20px;
-	padding-left: 20px;">
+
 <article style="display: flex;	
 	flex-flow: row wrap;
 	justify-content: center;
@@ -100,6 +99,6 @@ Fonctionnalités :
  </div>
 
  </article>
- </body>
+ 
 
 
