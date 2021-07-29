@@ -27,8 +27,10 @@ Fonctionnalités :
 -Ajout de nouveaux sur l'actualité musical (administrateur)
 
 -Diponible sur la plateforme Android
-<img src="https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg" width="100" height="100">
-![IMG-20200412-WA0037](https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg) 
+
+<img src="https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg" width="200" height="400">
+
+
 ![WhatsApp Image 2020-07-22 at 22 38 06](https://user-images.githubusercontent.com/47745859/127496011-9b7d6c01-d6d9-40f0-bc31-89377a6bf06c.jpeg)
 
 ![WhatsApp Image 2020-07-21 at 20 17 58](https://user-images.githubusercontent.com/47745859/127495885-f05f625c-bde6-4941-baa6-e5febdbc824e.jpeg)  
