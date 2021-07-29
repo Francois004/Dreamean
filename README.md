@@ -1,5 +1,6 @@
 # Dreamean
-Application de streaming musical et local (Bénin)
+Application mobile de streaming musical et local (Bénin)
+Technologies : Ionic4 - AngularJS - Firebase - Rest api
 
 Fonctionnalités :
 
@@ -8,14 +9,23 @@ Fonctionnalités :
 -Accès en exclusivité à tout les singles( format mp3) et albums de la scène musciale béninoise 
 
 -Posibilité  d'enregistrer les musiques pour le mode hors connexion 
+
 -Modification de la d'attente 
+
 -Recherche de musiques , d'albums, ou d'artistes spécifiques
+
 -Possibilité de passer à un plan premium plus avantageux 
+
 -Paiemeent en quelques clics grace au service/api Fedapay/Mobile money
+
 -Ajout dans les sections playlits et favoris
+
 -Ecoutes de musiques hors connexion
+
 -Uploading de musiques et albums (administrateur)
+
 -Ajout de nouveaux sur l'actualité musical (administrateur)
+
 -Diponible sur la plateforme Android
 
 ![IMG-20200412-WA0037](https://user-images.githubusercontent.com/47745859/127498471-0407b980-ec1c-41af-8977-3f08dd87d0ce.jpg) 
